@@ -6,7 +6,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.cininfo.MainActivity
 import com.example.cininfo.R
 
 class MainFragment : Fragment() {

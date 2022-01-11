@@ -1,8 +1,8 @@
-package com.example.cininfo
+package com.example.cininfo.ui.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.cininfo.ui.main.MainFragment
+import com.example.cininfo.R
 
 class MainActivity : AppCompatActivity() {
 
