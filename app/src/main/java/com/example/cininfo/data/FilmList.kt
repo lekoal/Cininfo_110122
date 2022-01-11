@@ -15,7 +15,14 @@ object FilmList {
     )
 
     fun getPopularFilms() = listOf(
-        FilmData("Форрест Гамп", "1994", "США", R.drawable.small_forrest_gump_1994)
+        FilmData("Форрест Гамп", "1994", "США", R.drawable.small_forrest_gump_1994),
+        FilmData("1+1", "2011", "Франция", R.drawable.small_intouchables_2011),
+        FilmData("Интерстеллар", "2014", "Великобритания, Канада, США", R.drawable.small_interstellar_2014),
+        FilmData("Побег из Шоушенка", "1994", "США", R.drawable.small_pobeg_iz_shoushenka_1994),
+        FilmData("Зелёная миля", "1999", "США", R.drawable.small_zelenaya_milya_1999),
+        FilmData("Властелин колец. Братство кольца", "2001", "Новая Зеландия, США", R.drawable.small_vk_bratstvo_kolca_2001),
+        FilmData("Властелин колец. Две крепости", "2002", "Новая Зеландия, США", R.drawable.small_vk_dve_kreposti_2002),
+        FilmData("Властелин колец. Возвращение короля", "2003", "Новая Зеландия, США", R.drawable.small_vk_vozvrashenie_korolya_2003)
     )
 
 }
