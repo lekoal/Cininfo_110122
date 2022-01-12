@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="outerRViewMargin">10dp</dimen>
+    <dimen name="filmsListItemHeight">180dp</dimen>
+    <dimen name="filmsListItemMargin">10dp</dimen>
+    <dimen name="filmItemHorizontalMargin">8dp</dimen>
+    <dimen name="listNameMargin">15dp</dimen>
+    <dimen name="listFilmsTopMargin">20dp</dimen>
+    <dimen name="listFilmsBottomMargin">10dp</dimen>
+    <dimen name="filmItemWidth">130dp</dimen>
+    <dimen name="filmsItemHeight">200dp</dimen>
+    <dimen name="mainScreenTopPadding">20dp</dimen>
+
+</resources>

@@ -5,16 +5,48 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.main.MainFragment">
+    tools:context=".ui.main.MainFragment"
+    android:paddingTop="@dimen/mainScreenTopPadding">
 
     <TextView
-        android:id="@+id/message"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="MainFragment"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:text="@string/freshText"
+        android:layout_marginStart="@dimen/outerRViewMargin"
+        android:id="@+id/freshTitle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/freshRView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/outerRViewMargin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/freshTitle"
+        tools:listitem="@layout/film_item" />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/popularText"
+        android:layout_marginStart="@dimen/outerRViewMargin"
+        android:layout_marginTop="@dimen/outerRViewMargin"
+        android:id="@+id/popularTitle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/freshRView" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/popularRView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/outerRViewMargin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/popularTitle"
+        tools:listitem="@layout/film_item" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="@dimen/filmItemWidth"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/smallFilmImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginHorizontal="@dimen/filmItemHorizontalMargin"
+        android:contentDescription=""
+        tools:src="@drawable/small_forrest_gump_1994" />
+
+    <TextView
+        android:id="@+id/filmName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/filmItemHorizontalMargin"
+        android:singleLine="false"
+        tools:text="Название" />
+
+    <TextView
+        android:id="@+id/filmYear"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/filmItemHorizontalMargin"
+        tools:text="Год" />
+
+</LinearLayout>
