@@ -10,5 +10,10 @@
     <dimen name="filmItemWidth">130dp</dimen>
     <dimen name="filmsItemHeight">200dp</dimen>
     <dimen name="mainScreenTopPadding">20dp</dimen>
+    <dimen name="separatorHeight">1dp</dimen>
+    <dimen name="separatorMarginVertical">10dp</dimen>
+    <dimen name="filmItemNameWidth">70dp</dimen>
+    <dimen name="separatorMarginHorizontal">20dp</dimen>
+    <dimen name="filmItemPadding">8dp</dimen>
 
 </resources>

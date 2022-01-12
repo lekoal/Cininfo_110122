@@ -1,24 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="@dimen/filmItemWidth"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
-
-    <ImageView
-        android:id="@+id/smallFilmImage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginHorizontal="@dimen/filmItemHorizontalMargin"
-        android:contentDescription=""
-        tools:src="@drawable/small_forrest_gump_1994" />
+    android:background="@drawable/rectangle_rounded_all"
+    android:layout_marginEnd="@dimen/filmsListItemMargin"
+    android:padding="@dimen/filmItemPadding"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <TextView
         android:id="@+id/filmName"
-        android:layout_width="wrap_content"
+        android:layout_width="@dimen/filmItemNameWidth"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/filmItemHorizontalMargin"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/smallFilmImage"
         android:singleLine="false"
         tools:text="Название" />
 
@@ -26,7 +21,18 @@
         android:id="@+id/filmYear"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/filmItemHorizontalMargin"
+        app:layout_constraintTop_toBottomOf="@id/filmName"
+        app:layout_constraintStart_toStartOf="parent"
         tools:text="Год" />
 
-</LinearLayout>
+    <ImageView
+        android:id="@+id/smallFilmImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/filmName"
+        app:layout_constraintTop_toTopOf="@id/filmName"
+        android:contentDescription="@string/film_image"
+        android:layout_marginStart="@dimen/filmsListItemMargin"
+        tools:src="@drawable/small_forrest_gump_1994" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

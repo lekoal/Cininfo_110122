@@ -2,4 +2,5 @@
     <string name="app_name">Cininfo</string>
     <string name="freshText">Свежее</string>
     <string name="popularText">Популярное</string>
+    <string name="film_image">Film image</string>
 </resources>
