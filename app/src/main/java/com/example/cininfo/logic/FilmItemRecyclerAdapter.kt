@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.cininfo.R
 import com.example.cininfo.data.FilmData
 
-class FilmItemRecyclerAdapter(private val listFilm: List<FilmData>) : RecyclerView.Adapter<FilmItemRecyclerAdapter.FilmViewHolder>() {
+class FilmItemRecyclerAdapter(private val listFilm: List<FilmData>, private val onItemClickListener: OnItemClickListener) : RecyclerView.Adapter<FilmItemRecyclerAdapter.FilmViewHolder>() {
 
     class FilmViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val smallFilmImage: ImageView = itemView.findViewById(R.id.smallFilmImage)
@@ -28,10 +28,17 @@ class FilmItemRecyclerAdapter(private val listFilm: List<FilmData>) : RecyclerVi
         holder.filmYear.text = listFilm[position].releaseDate
         holder.smallFilmImage.setImageResource(listFilm[position].smallImage)
 
+        holder.itemView.setOnClickListener {
+            onItemClickListener.onClick(listFilm[position])
+        }
     }
 
     override fun getItemCount(): Int {
         return listFilm.size
+    }
+
+    class OnItemClickListener(val itemClickListener: (filmData: FilmData) -> Unit) {
+        fun onClick(filmData: FilmData) = itemClickListener(filmData)
     }
 
 

@@ -4,10 +4,14 @@ import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
+import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
+import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.cininfo.data.FilmList
 import com.example.cininfo.databinding.MainFragmentBinding
 import com.example.cininfo.logic.AppState
@@ -86,10 +90,21 @@ class MainFragment : Fragment() {
 
         freshRView.layoutManager =
             LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
-        freshRView.adapter = FilmItemRecyclerAdapter(filmData.getFreshFilms())
+        freshRView.adapter = FilmItemRecyclerAdapter(
+            filmData.getFreshFilms(),
+            FilmItemRecyclerAdapter.OnItemClickListener { filmData ->
+                Toast.makeText(requireContext(), "${filmData.name} is pressed", Toast.LENGTH_SHORT)
+                    .show()
+            })
+
 
         popularRView.layoutManager =
             LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
-        popularRView.adapter = FilmItemRecyclerAdapter(filmData.getPopularFilms())
+        popularRView.adapter = FilmItemRecyclerAdapter(
+            filmData.getPopularFilms(),
+            FilmItemRecyclerAdapter.OnItemClickListener { filmData ->
+                Toast.makeText(requireContext(), "${filmData.name} is pressed", Toast.LENGTH_SHORT)
+                    .show()
+            })
     }
 }
