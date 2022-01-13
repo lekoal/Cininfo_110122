@@ -10,4 +10,5 @@
     <color name="separator_start_color">#888888</color>
     <color name="separator_center_color">#C6C6C6</color>
     <color name="separator_end_color">#9B9B9B</color>
+    <color name="loading_background">#00FFFFFF</color>
 </resources>
