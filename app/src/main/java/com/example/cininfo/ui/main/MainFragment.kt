@@ -39,7 +39,7 @@ class MainFragment : Fragment() {
 
         viewModel = ViewModelProvider(this)[MainViewModel::class.java]
         viewModel.getLiveData().observe(viewLifecycleOwner, Observer { renderData(it) })
-        viewModel.getFilmList()
+        viewModel.getFilmDataFromLocalSource()
 
     }
 
@@ -53,9 +53,13 @@ class MainFragment : Fragment() {
         val loadingLayout = binding.loadingLayout
         val mainView = binding.mainView
 
-        when (appState) {
+        var appStateChanged = appState
+
+        if ((1..10).random() > 4) appStateChanged = AppState.Error(Throwable("Error"))
+
+        when (appStateChanged) {
             is AppState.Success -> {
-                val filmData = appState.filmData
+                val filmData = appStateChanged.filmData
                 loadingLayout.visibility = View.GONE
                 setData(filmData)
                 Snackbar.make(mainView, "Success", Snackbar.LENGTH_LONG).show()
@@ -67,7 +71,10 @@ class MainFragment : Fragment() {
                 loadingLayout.visibility = View.GONE
                 Snackbar
                     .make(mainView, "Error", Snackbar.LENGTH_INDEFINITE)
-                    .setAction("Reload") { viewModel.getFilmList() }
+                    .setAction("Reload") {
+                        viewModel.getFilmDataFromLocalSource()
+                        renderData(appState)
+                    }
                     .show()
             }
         }

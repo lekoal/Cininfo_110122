@@ -18,8 +18,6 @@ class MainViewModel(
 
     fun getFilmDataFromRemoteSource() = getDataFromLocalSource()
 
-    fun getFilmList() = getDataFromLocalSource()
-
     private fun getDataFromLocalSource() {
         liveDataToObserve.value = AppState.Loading
         Thread {
