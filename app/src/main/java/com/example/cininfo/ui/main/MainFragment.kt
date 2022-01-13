@@ -38,7 +38,7 @@ class MainFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         viewModel = ViewModelProvider(this)[MainViewModel::class.java]
-        viewModel.getLiveData().observe(viewLifecycleOwner, Observer { renderData(it as AppState) })
+        viewModel.getLiveData().observe(viewLifecycleOwner, Observer { renderData(it) })
         viewModel.getFilmList()
 
     }
