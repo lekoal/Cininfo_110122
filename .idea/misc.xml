@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/antius/AndroidStudioProjects/Cininfo/app/src/main/res/drawable/ic_baseline_more_vert_24.xml" value="0.14907407407407408" />
         <entry key="..\:/Users/antius/AndroidStudioProjects/Cininfo/app/src/main/res/drawable/ic_launcher_background.xml" value="0.12291666666666666" />
         <entry key="..\:/Users/antius/AndroidStudioProjects/Cininfo/app/src/main/res/drawable/rectangle_rounded_all.xml" value="0.21666666666666667" />
         <entry key="..\:/Users/antius/AndroidStudioProjects/Cininfo/app/src/main/res/drawable/separator.xml" value="0.12291666666666666" />
@@ -12,6 +13,7 @@
         <entry key="..\:/Users/antius/AndroidStudioProjects/Cininfo/app/src/main/res/layout/film_list_item.xml" value="0.30000000715255754" />
         <entry key="..\:/Users/antius/AndroidStudioProjects/Cininfo/app/src/main/res/layout/main_activity.xml" value="0.2171875" />
         <entry key="..\:/Users/antius/AndroidStudioProjects/Cininfo/app/src/main/res/layout/main_fragment.xml" value="0.24000000572204605" />
+        <entry key="..\:/Users/antius/AndroidStudioProjects/Cininfo/app/src/main/res/menu/toolbar_menu.xml" value="0.2171875" />
       </map>
     </option>
   </component>

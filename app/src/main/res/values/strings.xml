@@ -1,6 +1,8 @@
 <resources>
-    <string name="app_name">Cininfo</string>
+    <string name="app_name">Cininfo - Новинки и хиты кино</string>
     <string name="freshText">Свежее</string>
     <string name="popularText">Популярное</string>
     <string name="film_image">Film image</string>
+    <string name="search_hint">Поиск</string>
+    <string name="more_hint">Меню</string>
 </resources>
