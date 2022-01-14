@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.main.FilmDetailFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/detailsView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.main.FilmDetailFragment">
+
+        <ImageView
+            android:id="@+id/detailsFilmImage"
+            android:layout_width="200dp"
+            android:layout_height="300dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@drawable/big_forrest_gump_1994" />
+
+        <TextView
+            android:id="@+id/filmNameRus"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/outerRViewMargin"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/detailsFilmImage"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Название" />
+
+        <TextView
+            android:id="@+id/filmNameOriginal"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/outerRViewMargin"
+            android:textSize="@dimen/detailsNameOriginal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/detailsFilmImage"
+            app:layout_constraintTop_toBottomOf="@id/filmNameRus"
+            tools:text="Name" />
+
+        <TextView
+            android:id="@+id/filmReleaseYear"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/outerRViewMargin"
+            android:textSize="@dimen/detailsYear"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/detailsFilmImage"
+            app:layout_constraintTop_toBottomOf="@id/filmNameOriginal"
+            tools:text="Год" />
+
+        <TextView
+            android:id="@+id/detailsShortDescription"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/outerRViewMargin"
+            android:textSize="@dimen/detailsFilmDescription"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/detailsFilmImage"
+            app:layout_constraintTop_toBottomOf="@id/filmReleaseYear" />
+
+        <TextView
+            android:id="@+id/detailsLongDescription"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/outerRViewMargin"
+            android:textSize="@dimen/detailsFilmDescription"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/detailsFilmImage"
+            app:layout_constraintTop_toBottomOf="@id/detailsShortDescription" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>

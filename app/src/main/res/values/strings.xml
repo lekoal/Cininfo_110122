@@ -5,4 +5,6 @@
     <string name="film_image">Film image</string>
     <string name="search_hint">Поиск</string>
     <string name="more_hint">Меню</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
