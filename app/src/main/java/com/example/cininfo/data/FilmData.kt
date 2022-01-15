@@ -1,5 +1,9 @@
 package com.example.cininfo.data
 
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+
+@Parcelize
 data class FilmData(
     val name: String,
     val originalName: String,
@@ -9,4 +13,4 @@ data class FilmData(
     val longDescription: String,
     val smallImage: Int,
     val bigImage: Int
-)
+) : Parcelable
