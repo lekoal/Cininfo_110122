@@ -15,9 +15,19 @@ class FilmItemRecyclerAdapter(
 ) : RecyclerView.Adapter<FilmItemRecyclerAdapter.FilmViewHolder>() {
 
     class FilmViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val smallFilmImage: ImageView = itemView.findViewById(R.id.smallFilmImage)
-        val filmName: TextView = itemView.findViewById(R.id.filmName)
-        val filmYear: TextView = itemView.findViewById(R.id.filmYear)
+        private val smallFilmImage: ImageView = itemView.findViewById(R.id.smallFilmImage)
+        private val filmName: TextView = itemView.findViewById(R.id.filmName)
+        private val filmYear: TextView = itemView.findViewById(R.id.filmYear)
+
+        fun bind(filmData: FilmData, onItemClickListener: OnItemClickListener?) {
+            filmName.text = filmData.name
+            filmYear.text = filmData.releaseDate
+            smallFilmImage.setImageResource(filmData.smallImage)
+
+            itemView.setOnClickListener {
+                onItemClickListener?.onClick(filmData)
+            }
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FilmViewHolder {
@@ -27,13 +37,7 @@ class FilmItemRecyclerAdapter(
     }
 
     override fun onBindViewHolder(holder: FilmViewHolder, position: Int) {
-        holder.filmName.text = listFilm[position].name
-        holder.filmYear.text = listFilm[position].releaseDate
-        holder.smallFilmImage.setImageResource(listFilm[position].smallImage)
-
-        holder.itemView.setOnClickListener {
-            onItemClickListener?.onClick(listFilm[position])
-        }
+        holder.bind(listFilm[position], onItemClickListener)
     }
 
     override fun getItemCount(): Int {
