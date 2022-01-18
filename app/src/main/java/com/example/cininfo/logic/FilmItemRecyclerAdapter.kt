@@ -20,9 +20,11 @@ class FilmItemRecyclerAdapter(
         private val filmYear: TextView = itemView.findViewById(R.id.filmYear)
 
         fun bind(filmData: FilmData, onItemClickListener: OnItemClickListener?) {
-            filmName.text = filmData.name
-            filmYear.text = filmData.releaseDate
-            smallFilmImage.setImageResource(filmData.smallImage)
+            filmData.apply {
+                filmName.text = name
+                filmYear.text = releaseDate
+                smallFilmImage.setImageResource(smallImage)
+            }
 
             itemView.setOnClickListener {
                 onItemClickListener?.onClick(filmData)
@@ -40,9 +42,7 @@ class FilmItemRecyclerAdapter(
         holder.bind(listFilm[position], onItemClickListener)
     }
 
-    override fun getItemCount(): Int {
-        return listFilm.size
-    }
+    override fun getItemCount() = listFilm.size
 
     class OnItemClickListener(val itemClickListener: (filmData: FilmData) -> Unit) {
         fun onClick(filmData: FilmData) = itemClickListener(filmData)

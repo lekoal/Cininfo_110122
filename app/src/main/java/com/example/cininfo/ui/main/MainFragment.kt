@@ -7,7 +7,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.FragmentManager
-import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.cininfo.R
 import com.example.cininfo.data.FilmData
@@ -32,7 +31,7 @@ class MainFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = MainFragmentBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -41,7 +40,7 @@ class MainFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         viewModel = ViewModelProvider(this)[MainViewModel::class.java]
-        viewModel.getLiveData().observe(viewLifecycleOwner, Observer { renderData(it) })
+        viewModel.getLiveData().observe(viewLifecycleOwner, { renderData(it) })
         viewModel.getFilmDataFromLocalSource()
 
     }
@@ -56,30 +55,32 @@ class MainFragment : Fragment() {
         val loadingLayout = binding.loadingLayout
         val mainView = binding.mainView
 
-        when (appState) {
-            is AppState.Success -> {
-                val filmData = appState.filmData
-                loadingLayout.visibility = View.GONE
-                setData(filmData)
-                Snackbar.make(mainView, "Success", Snackbar.LENGTH_LONG).show()
-            }
-            is AppState.Loading -> {
-                loadingLayout.visibility = View.VISIBLE
-            }
-            is AppState.Error -> {
-                loadingLayout.visibility = View.GONE
-                Snackbar
-                    .make(mainView, "Error", Snackbar.LENGTH_INDEFINITE)
-                    .setAction("Reload") {
-                        viewModel.getFilmDataFromLocalSource()
-                        renderData(appState)
-                    }
-                    .show()
+        loadingLayout.apply {
+            when (appState) {
+                is AppState.Success -> {
+                    val filmData = appState.filmData
+                    visibility = View.GONE
+                    setData(filmData)
+                    Snackbar.make(mainView, "Success", Snackbar.LENGTH_LONG).show()
+                }
+                is AppState.Loading -> {
+                    visibility = View.VISIBLE
+                }
+                is AppState.Error -> {
+                    visibility = View.GONE
+                    Snackbar
+                        .make(mainView, "Error", Snackbar.LENGTH_INDEFINITE)
+                        .setAction("Reload") {
+                            viewModel.getFilmDataFromLocalSource()
+                            renderData(appState)
+                        }
+                        .show()
+                }
             }
         }
     }
 
-    private fun setData(filmData: FilmList) {
+    private fun setData(filmList: FilmList) {
 
         val manager = activity?.supportFragmentManager
 
@@ -89,7 +90,7 @@ class MainFragment : Fragment() {
         freshRView.layoutManager =
             LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         freshRView.adapter = FilmItemRecyclerAdapter(
-            filmData.getFreshFilms(),
+            filmList.getFreshFilms(),
             FilmItemRecyclerAdapter.OnItemClickListener { filmData ->
                 resultClicker(filmData, manager)
             })
@@ -97,7 +98,7 @@ class MainFragment : Fragment() {
         popularRView.layoutManager =
             LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         popularRView.adapter = FilmItemRecyclerAdapter(
-            filmData.getPopularFilms(),
+            filmList.getPopularFilms(),
             FilmItemRecyclerAdapter.OnItemClickListener { filmData ->
                 resultClicker(filmData, manager)
             })
