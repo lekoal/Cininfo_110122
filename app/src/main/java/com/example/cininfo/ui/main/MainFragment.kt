@@ -61,20 +61,19 @@ class MainFragment : Fragment() {
                     val filmData = appState.filmData
                     visibility = View.GONE
                     setData(filmData)
-                    Snackbar.make(mainView, "Success", Snackbar.LENGTH_LONG).show()
+                    showSnackBar(R.string.snack_bar_success_text)
                 }
                 is AppState.Loading -> {
                     visibility = View.VISIBLE
                 }
                 is AppState.Error -> {
                     visibility = View.GONE
-                    Snackbar
-                        .make(mainView, "Error", Snackbar.LENGTH_INDEFINITE)
-                        .setAction("Reload") {
-                            viewModel.getFilmDataFromLocalSource()
-                            renderData(appState)
-                        }
-                        .show()
+                    showActionSnackBar(
+                        R.string.snack_bar_error_text,
+                        R.string.snack_bar_action_text,
+                        appState
+                    )
+
                 }
             }
         }
@@ -113,5 +112,24 @@ class MainFragment : Fragment() {
                 .addToBackStack("")
                 .commitAllowingStateLoss()
         }
+    }
+
+    private fun View.showSnackBar(
+        text: Int,
+        length: Int = Snackbar.LENGTH_SHORT
+    ) {
+        Snackbar.make(this, text, length).show()
+    }
+
+    private fun View.showActionSnackBar(
+        text: Int,
+        actionText: Int,
+        appState: AppState,
+        length: Int = Snackbar.LENGTH_INDEFINITE
+    ) {
+        Snackbar.make(this, text, length).setAction(actionText) {
+            viewModel.getFilmDataFromLocalSource()
+            renderData(appState)
+        }.show()
     }
 }
