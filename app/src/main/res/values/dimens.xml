@@ -15,5 +15,12 @@
     <dimen name="filmItemNameWidth">70dp</dimen>
     <dimen name="separatorMarginHorizontal">20dp</dimen>
     <dimen name="filmItemPadding">8dp</dimen>
+    <dimen name="detailsNameOriginal">13sp</dimen>
+    <dimen name="detailsYear">15sp</dimen>
+    <dimen name="detailsFilmDescription">16sp</dimen>
+    <dimen name="detailImageWidth">200dp</dimen>
+    <dimen name="detailImageHeight">300dp</dimen>
+    <dimen name="detailsNameSize">20sp</dimen>
+    <dimen name="topDescriptionMargin">20dp</dimen>
 
 </resources>
