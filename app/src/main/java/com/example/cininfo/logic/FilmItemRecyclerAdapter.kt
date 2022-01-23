@@ -7,10 +7,10 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cininfo.R
-import com.example.cininfo.data.FilmData
+import com.example.cininfo.data.FilmDTO
 
 class FilmItemRecyclerAdapter(
-    private val listFilm: List<FilmData>,
+    private val listFilm: List<FilmDTO>?,
     private var onItemClickListener: OnItemClickListener?
 ) : RecyclerView.Adapter<FilmItemRecyclerAdapter.FilmViewHolder>() {
 
@@ -19,11 +19,11 @@ class FilmItemRecyclerAdapter(
         private val filmName: TextView = itemView.findViewById(R.id.filmName)
         private val filmYear: TextView = itemView.findViewById(R.id.filmYear)
 
-        fun bind(filmData: FilmData, onItemClickListener: OnItemClickListener?) {
-            filmData.apply {
-                filmName.text = name
-                filmYear.text = releaseDate
-                smallFilmImage.setImageResource(smallImage)
+        fun bind(filmData: FilmDTO?, onItemClickListener: OnItemClickListener?) {
+            filmData?.apply {
+                filmName.text = title
+                filmYear.text = release_date
+                smallFilmImage.setImageResource(R.drawable.small_no_image_temp)
             }
 
             itemView.setOnClickListener {
@@ -39,12 +39,12 @@ class FilmItemRecyclerAdapter(
     }
 
     override fun onBindViewHolder(holder: FilmViewHolder, position: Int) {
-        holder.bind(listFilm[position], onItemClickListener)
+        holder.bind(listFilm?.get(position), onItemClickListener)
     }
 
-    override fun getItemCount() = listFilm.size
+    override fun getItemCount() = listFilm?.size ?: 0
 
-    class OnItemClickListener(val itemClickListener: (filmData: FilmData) -> Unit) {
-        fun onClick(filmData: FilmData) = itemClickListener(filmData)
+    class OnItemClickListener(val itemClickListener: (filmData: FilmDTO?) -> Unit) {
+        fun onClick(filmData: FilmDTO?) = itemClickListener(filmData)
     }
 }

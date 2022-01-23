@@ -14,15 +14,23 @@ class MainViewModel(
 
     fun getLiveData() = liveDataToObserve
 
-    fun getFilmDataFromLocalSource() = getDataFromLocalSource()
+//    fun getFilmDataFromLocalSource() = getDataFromRemoteSource()
 
-    fun getFilmDataFromRemoteSource() = getDataFromLocalSource()
+    fun getFilmDataFromRemoteSource() = getDataFromRemoteSource()
 
-    private fun getDataFromLocalSource() {
+//    private fun getDataFromLocalSource() {
+//        liveDataToObserve.value = AppState.Loading
+//        Thread {
+//            sleep(1000)
+//            liveDataToObserve.postValue(AppState.Success(repositoryImpl.getFilmDataFromLocalStorage()))
+//        }.start()
+//    }
+
+    private fun getDataFromRemoteSource() {
         liveDataToObserve.value = AppState.Loading
         Thread {
             sleep(1000)
-            liveDataToObserve.postValue(AppState.Success(repositoryImpl.getFilmDataFromLocalStorage()))
+            liveDataToObserve.postValue(AppState.Success(repositoryImpl.getFilmDataFromServer()))
         }.start()
     }
 }

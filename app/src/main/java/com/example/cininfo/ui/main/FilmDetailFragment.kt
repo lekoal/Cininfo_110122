@@ -5,7 +5,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.cininfo.R
+import com.example.cininfo.data.FilmDTO
 import com.example.cininfo.data.FilmData
+import com.example.cininfo.data.FilmList
 import com.example.cininfo.databinding.FragmentFilmDetailBinding
 
 class FilmDetailFragment : Fragment() {
@@ -24,15 +27,14 @@ class FilmDetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        arguments?.getParcelable<FilmData>(BUNDLE_EXTRA)?.let {
+        arguments?.getParcelable<FilmDTO>(BUNDLE_EXTRA)?.let {
             with(binding) {
                 it.apply {
-                    filmNameRus.text = name
-                    filmNameOriginal.text = originalName
-                    filmReleaseYear.text = releaseDate
-                    detailsFilmImage.setImageResource(bigImage)
-                    detailsShortDescription.text = shortDescription
-                    detailsLongDescription.text = longDescription
+                    filmNameRus.text = title
+                    filmNameOriginal.text = original_title
+                    filmReleaseYear.text = release_date
+                    detailsFilmImage.setImageResource(R.drawable.big_no_image_temp)
+                    detailsLongDescription.text = overview
                 }
             }
         }

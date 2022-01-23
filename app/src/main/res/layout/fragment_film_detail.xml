@@ -19,6 +19,8 @@
             android:layout_height="300dp"
             android:contentDescription="@string/film_image"
             app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="@dimen/outerRViewMargin"
+            android:layout_marginTop="@dimen/outerRViewMargin"
             app:layout_constraintTop_toTopOf="parent"
             tools:src="@drawable/big_forrest_gump_1994" />
 
@@ -55,17 +57,6 @@
             app:layout_constraintStart_toEndOf="@id/detailsFilmImage"
             app:layout_constraintTop_toBottomOf="@id/filmNameOriginal"
             tools:text="Год" />
-
-        <TextView
-            android:id="@+id/detailsShortDescription"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/outerRViewMargin"
-            android:layout_marginTop="@dimen/topDescriptionMargin"
-            android:textSize="@dimen/detailsFilmDescription"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/detailsFilmImage"
-            app:layout_constraintTop_toBottomOf="@id/filmReleaseYear" />
 
         <TextView
             android:id="@+id/detailsLongDescription"
