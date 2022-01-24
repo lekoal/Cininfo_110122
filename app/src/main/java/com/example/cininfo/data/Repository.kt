@@ -1,6 +1,7 @@
 package com.example.cininfo.data
 
 interface Repository {
-    fun getFilmDataFromServer() : FilmList
+    fun getFreshFilmDataFromServer() : List<FilmDTO>?
+    fun getPopularFilmDataFromServer() : List<FilmDTO>?
     fun getFilmDataFromLocalStorage() : FilmList
 }

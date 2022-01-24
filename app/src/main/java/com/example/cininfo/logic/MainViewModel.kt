@@ -30,7 +30,7 @@ class MainViewModel(
         liveDataToObserve.value = AppState.Loading
         Thread {
             sleep(1000)
-            liveDataToObserve.postValue(AppState.Success(repositoryImpl.getFilmDataFromServer()))
+            liveDataToObserve.postValue(AppState.Success(repositoryImpl.getFreshFilmDataFromServer(), repositoryImpl.getPopularFilmDataFromServer()))
         }.start()
     }
 }

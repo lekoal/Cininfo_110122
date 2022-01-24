@@ -3,6 +3,7 @@ package com.example.cininfo.logic
 import android.os.Build
 import android.os.Handler
 import android.os.Looper
+import android.provider.Telephony
 import android.util.Log
 import androidx.annotation.RequiresApi
 import com.example.cininfo.BuildConfig
@@ -27,6 +28,8 @@ object FilmDataReceiver {
     private var freshFilmList: List<FilmDTO>? = null
     private var popularFilmList: List<FilmDTO>? = null
 
+    lateinit var thread: Thread
+
     @RequiresApi(Build.VERSION_CODES.N)
     private fun getLines(reader: BufferedReader) = reader.lines().collect(Collectors.joining("/n"))
 
@@ -39,7 +42,7 @@ object FilmDataReceiver {
             val popularUri =
                 URL(popularUrl)
             val handler = Looper.myLooper()?.let { Handler(it) }
-            Thread(Runnable {
+            thread = Thread(Runnable {
                 lateinit var freshUrlConnection: HttpsURLConnection
                 lateinit var popularUrlConnection: HttpsURLConnection
                 try {
@@ -53,14 +56,17 @@ object FilmDataReceiver {
                 } catch (e: Exception) {
                     Log.e("", "Fail connection", e)
                     e.printStackTrace()
+                    AppState.Error(Throwable("Fail connection"))
                 } finally {
                     freshUrlConnection.disconnect()
                     popularUrlConnection.disconnect()
                 }
-            }).start()
+            })
+            thread.start()
         } catch (e: MalformedURLException) {
             Log.e("", "Fail URI", e)
             e.printStackTrace()
+            AppState.Error(Throwable("Fail URI"))
         }
     }
 
@@ -88,7 +94,19 @@ object FilmDataReceiver {
         }
     }
 
-    fun getFreshList() = freshFilmList
+    fun getFreshList(): List<FilmDTO>? {
+        while (thread.state == Thread.State.RUNNABLE) {
+            Thread.sleep(100)
+            getFreshList()
+        }
+        return freshFilmList
+    }
 
-    fun getPopularList() = popularFilmList
+    fun getPopularList(): List<FilmDTO>? {
+        while (thread.state == Thread.State.RUNNABLE) {
+            Thread.sleep(100)
+            getPopularList()
+        }
+        return popularFilmList
+    }
 }

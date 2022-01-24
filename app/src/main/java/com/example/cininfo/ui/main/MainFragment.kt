@@ -71,16 +71,16 @@ class MainFragment : Fragment() {
     private fun renderData(appState: AppState) {
 
         val loadingLayout = binding.loadingLayout
-        val mainView = binding.mainView
 
         FilmDataReceiver.getFilmsServer()
 
         loadingLayout.apply {
             when (appState) {
                 is AppState.Success -> {
-                    val filmData = appState.filmData
+                    val freshFilmData = appState.freshFilmData
+                    val popularFilmData = appState.popularFilmData
                     visibility = View.GONE
-                    setData(FilmDataReceiver.getFreshList(), FilmDataReceiver.getPopularList())
+                    setData(FilmDataReceiver.getFreshList(), popularFilmData)
                     showSnackBar(R.string.snack_bar_success_text)
                 }
                 is AppState.Loading -> {
