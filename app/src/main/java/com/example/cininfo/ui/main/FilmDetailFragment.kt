@@ -26,12 +26,14 @@ class FilmDetailFragment : Fragment() {
 
         arguments?.getParcelable<FilmData>(BUNDLE_EXTRA)?.let {
             with(binding) {
-                filmNameRus.text = it.name
-                filmNameOriginal.text = it.originalName
-                filmReleaseYear.text = it.releaseDate
-                detailsFilmImage.setImageResource(it.bigImage)
-                detailsShortDescription.text = it.shortDescription
-                detailsLongDescription.text = it.longDescription
+                it.apply {
+                    filmNameRus.text = name
+                    filmNameOriginal.text = originalName
+                    filmReleaseYear.text = releaseDate
+                    detailsFilmImage.setImageResource(bigImage)
+                    detailsShortDescription.text = shortDescription
+                    detailsLongDescription.text = longDescription
+                }
             }
         }
     }
