@@ -6,6 +6,10 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import coil.load
+import coil.size.Precision
+import coil.size.Scale
+import coil.transform.GrayscaleTransformation
 import com.example.cininfo.R
 import com.example.cininfo.data.FilmDTO
 
@@ -15,6 +19,7 @@ class FilmItemRecyclerAdapter(
 ) : RecyclerView.Adapter<FilmItemRecyclerAdapter.FilmViewHolder>() {
 
     class FilmViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        private val imageBaseUrl = "https://www.themoviedb.org/t/p/original"
         private val smallFilmImage: ImageView = itemView.findViewById(R.id.smallFilmImage)
         private val filmName: TextView = itemView.findViewById(R.id.filmName)
         private val filmYear: TextView = itemView.findViewById(R.id.filmYear)
@@ -23,7 +28,11 @@ class FilmItemRecyclerAdapter(
             filmData?.apply {
                 filmName.text = title
                 filmYear.text = release_date
-                smallFilmImage.setImageResource(R.drawable.small_no_image_temp)
+                smallFilmImage.load("$imageBaseUrl$poster_path") {
+                    precision(Precision.EXACT)
+                    error(R.drawable.small_no_image_temp)
+                    scale(Scale.FILL)
+                }
             }
 
             itemView.setOnClickListener {

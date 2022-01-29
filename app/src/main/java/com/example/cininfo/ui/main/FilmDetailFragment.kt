@@ -5,6 +5,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import coil.load
+import coil.size.Precision
+import coil.size.Scale
 import com.example.cininfo.R
 import com.example.cininfo.data.FilmDTO
 import com.example.cininfo.data.FilmData
@@ -13,6 +16,7 @@ import com.example.cininfo.databinding.FragmentFilmDetailBinding
 
 class FilmDetailFragment : Fragment() {
 
+    private val imageBaseUrl = "https://www.themoviedb.org/t/p/original"
     private var _binding: FragmentFilmDetailBinding? = null
     private val binding get() = _binding!!
 
@@ -33,7 +37,11 @@ class FilmDetailFragment : Fragment() {
                     filmNameRus.text = title
                     filmNameOriginal.text = original_title
                     filmReleaseYear.text = release_date
-                    detailsFilmImage.setImageResource(R.drawable.big_no_image_temp)
+                    detailsFilmImage.load("$imageBaseUrl$poster_path") {
+                        precision(Precision.EXACT)
+                        error(R.drawable.big_no_image_temp)
+                        scale(Scale.FILL)
+                    }
                     detailsLongDescription.text = overview
                 }
             }
