@@ -80,7 +80,7 @@ class MainFragment : Fragment() {
                     val freshFilmData = appState.freshFilmData
                     val popularFilmData = appState.popularFilmData
                     visibility = View.GONE
-                    setData(FilmDataReceiver.getFreshList(), popularFilmData)
+                    setData(freshFilmData, popularFilmData)
                     showSnackBar(R.string.snack_bar_success_text)
                 }
                 is AppState.Loading -> {
