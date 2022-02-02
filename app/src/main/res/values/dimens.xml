@@ -22,5 +22,6 @@
     <dimen name="detailImageHeight">300dp</dimen>
     <dimen name="detailsNameSize">20sp</dimen>
     <dimen name="topDescriptionMargin">20dp</dimen>
+    <dimen name="search_label_text_size">15sp</dimen>
 
 </resources>

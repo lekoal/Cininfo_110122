@@ -3,9 +3,6 @@ package com.example.cininfo.ui.main
 import android.os.Build
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -13,25 +10,14 @@ import android.view.ViewGroup
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.cininfo.BuildConfig
 import com.example.cininfo.R
 import com.example.cininfo.data.FilmDTO
-import com.example.cininfo.data.FilmOuterDTO
-import com.example.cininfo.data.ResultURL
 import com.example.cininfo.databinding.MainFragmentBinding
 import com.example.cininfo.logic.AppState
 import com.example.cininfo.logic.FilmDataReceiver
 import com.example.cininfo.logic.FilmItemRecyclerAdapter
 import com.example.cininfo.logic.MainViewModel
 import com.google.android.material.snackbar.Snackbar
-import com.google.gson.Gson
-import java.io.BufferedReader
-import java.io.InputStreamReader
-import java.lang.Exception
-import java.net.MalformedURLException
-import java.net.URL
-import java.util.stream.Collectors
-import javax.net.ssl.HttpsURLConnection
 
 class MainFragment : Fragment() {
 

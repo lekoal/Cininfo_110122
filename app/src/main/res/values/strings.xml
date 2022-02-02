@@ -11,4 +11,9 @@
     <string name="snack_bar_text">Error!</string>
     <string name="snack_bar_action_text">Reload</string>
     <string name="snack_bar_success_text">Success!</string>
+    <string name="search_input_text">Введите название фильма для поиска</string>
+    <string name="last_searches_text">Предыдущие запросы</string>
+    <string name="search_button_description">search button</string>
+    <string name="adult_include">включить в поиск \"взрослый\" контент</string>
+    <string name="empty_edit_text_error">Поле поиска не заполнено</string>
 </resources>

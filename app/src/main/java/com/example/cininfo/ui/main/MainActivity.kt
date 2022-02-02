@@ -34,7 +34,12 @@ class MainActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.action_search -> Toast.makeText(this, "Search is pressed", Toast.LENGTH_SHORT).show()
+            R.id.action_search -> {
+                supportFragmentManager.beginTransaction()
+                    .replace(R.id.container, FilmSearchFragment.newInstance())
+                    .addToBackStack("")
+                    .commit()
+            }
             R.id.action_more -> Toast.makeText(this, "More menu is pressed", Toast.LENGTH_SHORT).show()
         }
         return super.onOptionsItemSelected(item)
