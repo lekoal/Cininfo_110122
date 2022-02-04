@@ -16,4 +16,9 @@
     <string name="search_button_description">search button</string>
     <string name="adult_include">включить в поиск \"взрослый\" контент</string>
     <string name="empty_edit_text_error">Поле поиска не заполнено</string>
+    <string name="search_text_title">Поисковый запрос</string>
+    <string name="enter_note">Оставить заметку</string>
+    <string name="save_note">Сохранить</string>
+    <string name="title_note">Моя заметка</string>
+    <string name="nothing_to_save">Нечего сохранять</string>
 </resources>

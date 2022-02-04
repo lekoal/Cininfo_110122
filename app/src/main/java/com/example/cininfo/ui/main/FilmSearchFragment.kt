@@ -18,6 +18,9 @@ import com.example.cininfo.logic.PreviousSearchesRecyclerAdapter
 
 private const val ADULT_SET = "ADULT_SET"
 
+const val BUNDLE_TEXT = "BUNDLE_TEXT"
+const val BUNDLE_IS_ADULT = "BUNDLE_IS_ADULT"
+
 class FilmSearchFragment : Fragment() {
 
     private var _binding: FragmentFilmSearchBinding? = null
@@ -42,20 +45,24 @@ class FilmSearchFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val sharedPref = activity?.getPreferences(Context.MODE_PRIVATE)
         val editor = sharedPref?.edit()
+        val manager = activity?.supportFragmentManager
+        val isAdultChecked =
+            activity?.getPreferences(Context.MODE_PRIVATE)?.getBoolean(ADULT_SET, false) == true
         binding.adultCheckbox.setOnCheckedChangeListener { _, b ->
             editor?.putBoolean(ADULT_SET, b)
             editor?.apply()
         }
-        binding.adultCheckbox.isChecked =
-            activity?.getPreferences(Context.MODE_PRIVATE)?.getBoolean(ADULT_SET, false) == true
+        binding.adultCheckbox.isChecked = isAdultChecked
 
         loadPreviousSearches(getSearchesFromDB())
 
         binding.searchButton.setOnClickListener {
+            val searchText = binding.searchEditText.text.toString()
             if (binding.searchEditText.text.isEmpty()) {
                 Toast.makeText(context, R.string.empty_edit_text_error, Toast.LENGTH_SHORT).show()
             } else {
-                saveSearchTextToDB(binding.searchEditText.text.toString())
+                saveSearchTextToDB(searchText)
+                pressSearchButton(searchText, manager, isAdultChecked)
             }
         }
     }
@@ -71,7 +78,7 @@ class FilmSearchFragment : Fragment() {
         loadPreviousSearches(getSearchesFromDB())
     }
 
-    private fun getSearchesFromDB() : List<String>{
+    private fun getSearchesFromDB(): List<String> {
         return searchHistoryRepository.getAllSearchHistory()
     }
 
@@ -95,5 +102,17 @@ class FilmSearchFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    private fun pressSearchButton(text: String, manager: FragmentManager?, isAdult: Boolean) {
+        if (manager != null) {
+            val bundle = Bundle()
+            bundle.putString(BUNDLE_TEXT, text)
+            bundle.putBoolean(BUNDLE_IS_ADULT, isAdult)
+            manager.beginTransaction()
+                .add(R.id.container, SearchResultFragment.newInstance(bundle))
+                .addToBackStack("")
+                .commitAllowingStateLoss()
+        }
     }
 }

@@ -1,10 +1,10 @@
 package com.example.cininfo.data
 
-import com.example.cininfo.BuildConfig
-
 object ApiUtils {
-    private val baseUrlMainPart = "https://api.themoviedb.org/"
-    private val baseUrlVersion = "3/"
-    private val discoverPart = "discover/"
-    val baseDiscoverUrl = "$baseUrlMainPart$baseUrlVersion$discoverPart"
+    private const val baseUrlMainPart = "https://api.themoviedb.org/"
+    private const val baseUrlVersion = "3/"
+    private const val discoverPart = "discover/"
+    private const val searchPart = "search/"
+    const val baseDiscoverUrl = "$baseUrlMainPart$baseUrlVersion$discoverPart"
+    const val baseSearchUrl = "$baseUrlMainPart$baseUrlVersion$searchPart"
 }

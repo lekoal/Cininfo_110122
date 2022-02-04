@@ -8,7 +8,6 @@ import android.view.MenuItem
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import com.example.cininfo.R
-import com.example.cininfo.logic.FilmDataReceiver
 
 class MainActivity : AppCompatActivity() {
 

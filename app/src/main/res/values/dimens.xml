@@ -23,5 +23,8 @@
     <dimen name="detailsNameSize">20sp</dimen>
     <dimen name="topDescriptionMargin">20dp</dimen>
     <dimen name="search_label_text_size">15sp</dimen>
+    <dimen name="search_text_height">50dp</dimen>
+    <dimen name="note_edit_min_height">100dp</dimen>
+    <dimen name="note_edit_max_height">170dp</dimen>
 
 </resources>
