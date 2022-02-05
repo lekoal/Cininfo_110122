@@ -1,5 +1,8 @@
 package com.example.cininfo.logic
 
+import android.content.BroadcastReceiver
+import android.content.Context
+import android.content.Intent
 import android.os.Build
 import android.os.Handler
 import android.os.Looper
@@ -10,6 +13,8 @@ import com.example.cininfo.BuildConfig
 import com.example.cininfo.data.FilmDTO
 import com.example.cininfo.data.FilmOuterDTO
 import com.example.cininfo.data.ResultURL
+import com.example.cininfo.ui.main.FRESH_FILM_LIST
+import com.example.cininfo.ui.main.POPULAR_FILM_LIST
 import com.google.gson.Gson
 import java.io.BufferedReader
 import java.io.InputStreamReader
@@ -30,83 +35,90 @@ object FilmDataReceiver {
 
     lateinit var thread: Thread
 
-    @RequiresApi(Build.VERSION_CODES.N)
-    private fun getLines(reader: BufferedReader) = reader.lines().collect(Collectors.joining("/n"))
+//    @RequiresApi(Build.VERSION_CODES.N)
+//    private fun getLines(reader: BufferedReader) = reader.lines().collect(Collectors.joining("/n"))
 
     @RequiresApi(Build.VERSION_CODES.N)
-    fun getFilmsServer() {
+    fun getFilmsServer(context: Context?) {
 
-        try {
-            val freshUri =
-                URL(freshUrl)
-            val popularUri =
-                URL(popularUrl)
-            val handler = Looper.myLooper()?.let { Handler(it) }
-            thread = Thread(Runnable {
-                lateinit var freshUrlConnection: HttpsURLConnection
-                lateinit var popularUrlConnection: HttpsURLConnection
-                try {
-                    val freshResultURL: ResultURL = makeConnection(freshUri)
-                    val popularResultURL: ResultURL = makeConnection(popularUri)
-                    freshUrlConnection = freshResultURL.getConnection()
-                    popularUrlConnection = popularResultURL.getConnection()
-                    val freshList = freshResultURL.getList()
-                    val popularList = popularResultURL.getList()
-                    handler?.post { setData(freshList, popularList) }
-                } catch (e: Exception) {
-                    Log.e("", "Fail connection", e)
-                    e.printStackTrace()
-                    AppState.Error(Throwable("Fail connection"))
-                } finally {
-                    freshUrlConnection.disconnect()
-                    popularUrlConnection.disconnect()
-                }
-            })
-            thread.start()
-        } catch (e: MalformedURLException) {
-            Log.e("", "Fail URI", e)
-            e.printStackTrace()
-            AppState.Error(Throwable("Fail URI"))
+//        try {
+//            val freshUri =
+//                URL(freshUrl)
+//            val popularUri =
+//                URL(popularUrl)
+//            val handler = Looper.myLooper()?.let { Handler(it) }
+//            thread = Thread(Runnable {
+//                lateinit var freshUrlConnection: HttpsURLConnection
+//                lateinit var popularUrlConnection: HttpsURLConnection
+//                try {
+//                    val freshResultURL: ResultURL = makeConnection(freshUri)
+//                    val popularResultURL: ResultURL = makeConnection(popularUri)
+//                    freshUrlConnection = freshResultURL.getConnection()
+//                    popularUrlConnection = popularResultURL.getConnection()
+//                    val freshList = freshResultURL.getList()
+//                    val popularList = popularResultURL.getList()
+//                    handler?.post { setData(freshList, popularList) }
+//                } catch (e: Exception) {
+//                    Log.e("", "Fail connection", e)
+//                    e.printStackTrace()
+//                    AppState.Error(Throwable("Fail connection"))
+//                } finally {
+//                    freshUrlConnection.disconnect()
+//                    popularUrlConnection.disconnect()
+//                }
+//            })
+//            thread.start()
+//        } catch (e: MalformedURLException) {
+//            Log.e("", "Fail URI", e)
+//            e.printStackTrace()
+//            AppState.Error(Throwable("Fail URI"))
+//        }
+
+        context.let {
+            it?.startService(Intent(it, GetDataService::class.java))
         }
     }
 
-    @RequiresApi(Build.VERSION_CODES.N)
-    private fun makeConnection(uri: URL): ResultURL {
-        val urlConnection = uri.openConnection() as HttpsURLConnection
-        urlConnection.requestMethod = "GET"
-        urlConnection.readTimeout = 10000
-        val bufferedReader =
-            BufferedReader(InputStreamReader(urlConnection.inputStream))
-        val filmList = Gson().fromJson(
-            getLines(bufferedReader),
-            FilmOuterDTO::class.java
-        ).results
+//    @RequiresApi(Build.VERSION_CODES.N)
+//    private fun makeConnection(uri: URL): ResultURL {
+//        val urlConnection = uri.openConnection() as HttpsURLConnection
+//        urlConnection.requestMethod = "GET"
+//        urlConnection.readTimeout = 10000
+//        val bufferedReader =
+//            BufferedReader(InputStreamReader(urlConnection.inputStream))
+//        val filmList = Gson().fromJson(
+//            getLines(bufferedReader),
+//            FilmOuterDTO::class.java
+//        ).results
+//
+//        return ResultURL(filmList, urlConnection)
+//    }
 
-        return ResultURL(filmList, urlConnection)
-    }
-
-    private fun setData(freshList: List<FilmDTO>?, popularList: List<FilmDTO>?) {
-        if (freshList != null) {
-            freshFilmList = freshList
-        }
-        if (popularList != null) {
-            popularFilmList = popularList
-        }
-    }
+//    private fun setData(freshList: List<FilmDTO>?, popularList: List<FilmDTO>?) {
+//        if (freshList != null) {
+//            freshFilmList = freshList
+//        }
+//        if (popularList != null) {
+//            popularFilmList = popularList
+//        }
+//    }
 
     fun getFreshList(): List<FilmDTO>? {
-        while (thread.state == Thread.State.RUNNABLE) {
-            Thread.sleep(100)
-            getFreshList()
-        }
-        return freshFilmList
+//        while (thread.state == Thread.State.RUNNABLE) {
+//            Thread.sleep(100)
+//            getFreshList()
+//        }
+//        return freshFilmList
+        return null
     }
 
     fun getPopularList(): List<FilmDTO>? {
-        while (thread.state == Thread.State.RUNNABLE) {
-            Thread.sleep(100)
-            getPopularList()
-        }
-        return popularFilmList
+//        while (thread.state == Thread.State.RUNNABLE) {
+//            Thread.sleep(100)
+//            getPopularList()
+//        }
+//        return popularFilmList
+        return null
     }
+
 }
