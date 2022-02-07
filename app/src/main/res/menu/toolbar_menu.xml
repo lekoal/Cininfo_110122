@@ -12,6 +12,18 @@
         android:id="@+id/action_more"
         app:showAsAction="always"
         android:icon="@drawable/ic_baseline_more_vert_24"
-        android:title="@string/more_hint" />
+        android:title="@string/more_hint">
+
+        <menu>
+
+            <item
+                android:id="@+id/contacts_list"
+                app:showAsAction="ifRoom"
+                android:icon="@drawable/ic_baseline_contact_page_24"
+                android:title="@string/contacts_list" />
+
+        </menu>
+
+    </item>
 
 </menu>
