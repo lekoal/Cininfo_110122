@@ -23,4 +23,5 @@
     <string name="nothing_to_save">Нечего сохранять</string>
     <string name="contacts_list">Контакты</string>
     <string name="need_permission_to_read_contacts">Требуется разрешение для чтения контактов</string>
+    <string name="name_and_phone_contact">%1$s, %n %2$s</string>
 </resources>

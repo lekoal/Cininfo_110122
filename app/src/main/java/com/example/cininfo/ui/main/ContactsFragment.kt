@@ -2,8 +2,10 @@ package com.example.cininfo.ui.main
 
 import android.Manifest
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.database.Cursor
+import android.net.Uri
 import android.os.Bundle
 import android.provider.ContactsContract
 import androidx.fragment.app.Fragment
@@ -80,8 +82,6 @@ class ContactsFragment : Fragment() {
             cursorWithContacts?.let { cursor ->
                 for (i in 0..cursor.count) {
                     if (cursor.moveToPosition(i)) {
-                        val contactId =
-                            cursor.getString(cursor.getColumnIndex(ContactsContract.Contacts._ID))
                         val name =
                             cursor.getString(cursor.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME))
 
@@ -117,10 +117,10 @@ class ContactsFragment : Fragment() {
 
     private fun addView(name: String?, phoneNumber: String?) = with(binding) {
         contactItem.addView(TextView(requireContext()).apply {
-            text = "${name}, \n${phoneNumber}"
+            text = getString(R.string.name_and_phone_contact, name, phoneNumber)
             textSize = resources.getDimension(R.dimen.contacts_name_size)
             setOnClickListener {
-                Toast.makeText(context, "PRESS", Toast.LENGTH_SHORT).show()
+                startActivity(Intent(Intent.ACTION_DIAL, Uri.fromParts("tel", phoneNumber, null)))
             }
         })
     }
