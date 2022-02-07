@@ -45,6 +45,12 @@ class MainActivity : AppCompatActivity() {
                     .addToBackStack("")
                     .commit()
             }
+            R.id.view_story -> {
+                supportFragmentManager.beginTransaction()
+                    .replace(R.id.container, ViewHistoryFragment.newInstance())
+                    .addToBackStack("")
+                    .commit()
+            }
         }
         return super.onOptionsItemSelected(item)
     }

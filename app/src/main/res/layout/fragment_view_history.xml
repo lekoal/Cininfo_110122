@@ -4,13 +4,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/common_background"
-    tools:context=".ui.main.ContactsFragment">
+    tools:context=".ui.main.ViewHistoryFragment">
 
     <LinearLayout
+        android:id="@+id/view_history_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/contact_item"
+        android:paddingBottom="@dimen/separatorMarginHorizontal"
         android:orientation="vertical"
-        android:padding="@dimen/outerRViewMargin" />
+        android:paddingHorizontal="@dimen/outerRViewMargin" />
 
 </ScrollView>

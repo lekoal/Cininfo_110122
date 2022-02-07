@@ -24,4 +24,6 @@
     <string name="contacts_list">Контакты</string>
     <string name="need_permission_to_read_contacts">Требуется разрешение для чтения контактов</string>
     <string name="name_and_phone_contact">%1$s, %n %2$s</string>
+    <string name="view_story">История просмотров</string>
+    <string name="view_history_watches_item">%1$s%nДата посещения: %2$s%nВремя просмотра: %3$d мин.%nЗаметка: %4$s</string>
 </resources>
