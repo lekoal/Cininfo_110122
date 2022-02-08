@@ -26,4 +26,9 @@
     <string name="name_and_phone_contact">%1$s, %n %2$s</string>
     <string name="view_story">История просмотров</string>
     <string name="view_history_watches_item">%1$s%nДата посещения: %2$s%nВремя просмотра: %3$d мин.%nЗаметка: %4$s</string>
+    <string name="filter_input">Введите название фильма</string>
+    <string name="title_filtration_text">Введите имя фильма</string>
+    <string name="filter_ok_button">Фильтровать</string>
+    <string name="empty_filter_edit_text_error">Не введено название фильма</string>
+    <string name="filter_title_result">Фильтр по названию: %1$s</string>
 </resources>

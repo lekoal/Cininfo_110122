@@ -12,6 +12,10 @@ class LocalWatchesRepositoryImpl(private val localDataSource: WatchInfoDao) : Lo
         return localDataSource.getDateById(id)
     }
 
+    override fun getFilteredWatchInfoByTitle(title: String?): List<WatchInfoEntity> {
+        return localDataSource.getDateByTitle(title)
+    }
+
     override fun saveWatchesEntity(
         id: Int?,
         title: String?,
