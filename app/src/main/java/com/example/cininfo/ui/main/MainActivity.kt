@@ -8,6 +8,8 @@ import android.view.MenuItem
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import com.example.cininfo.R
+import com.example.cininfo.ui.map.MapFragment
+import com.example.cininfo.ui.map.MapsFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -48,6 +50,12 @@ class MainActivity : AppCompatActivity() {
             R.id.view_story -> {
                 supportFragmentManager.beginTransaction()
                     .replace(R.id.container, ViewHistoryFragment.newInstance())
+                    .addToBackStack("")
+                    .commit()
+            }
+            R.id.open_map -> {
+                supportFragmentManager.beginTransaction()
+                    .replace(R.id.container, MapsFragment.newInstance())
                     .addToBackStack("")
                     .commit()
             }
