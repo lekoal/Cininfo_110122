@@ -18,6 +18,9 @@ class MainViewModel(
 
     fun getFilmDataFromRemoteSource() = getDataFromRemoteSource()
 
+    fun getFoundFilmDataFromRemoteSource(query: String?, isAdult: Boolean?) =
+        getFoundDataFromRemoteSource(query, isAdult)
+
 //    private fun getDataFromLocalSource() {
 //        liveDataToObserve.value = AppState.Loading
 //        Thread {
@@ -30,7 +33,27 @@ class MainViewModel(
         liveDataToObserve.value = AppState.Loading
         Thread {
             sleep(1000)
-            liveDataToObserve.postValue(AppState.Success(repositoryImpl.getFreshFilmDataFromServer(), repositoryImpl.getPopularFilmDataFromServer()))
+            liveDataToObserve.postValue(
+                AppState.Success(
+                    repositoryImpl.getFreshFilmDataFromServer(),
+                    repositoryImpl.getPopularFilmDataFromServer()
+                )
+            )
+        }.start()
+    }
+
+    private fun getFoundDataFromRemoteSource(query: String?, isAdult: Boolean?) {
+        liveDataToObserve.value = AppState.Loading
+        Thread {
+            sleep(1000)
+            liveDataToObserve.postValue(
+                AppState.SearchSuccess(
+                    repositoryImpl.getFoundFilmDataFromServer(
+                        query,
+                        isAdult
+                    )
+                )
+            )
         }.start()
     }
 }

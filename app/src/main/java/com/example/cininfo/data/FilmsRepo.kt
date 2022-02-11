@@ -22,4 +22,13 @@ object FilmsRepo {
         adapter.create(FreshFilmsAPI::class.java)
     }
 
+    val searchApi: SearchFilmsAPI by lazy {
+        val adapter = Retrofit.Builder()
+            .baseUrl(ApiUtils.baseSearchUrl)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+
+        adapter.create(SearchFilmsAPI::class.java)
+    }
+
 }

@@ -17,10 +17,10 @@
             android:id="@+id/detailsFilmImage"
             android:layout_width="200dp"
             android:layout_height="300dp"
-            android:contentDescription="@string/film_image"
-            app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="@dimen/outerRViewMargin"
             android:layout_marginTop="@dimen/outerRViewMargin"
+            android:contentDescription="@string/film_image"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:src="@drawable/big_forrest_gump_1994" />
 
@@ -57,6 +57,73 @@
             app:layout_constraintStart_toEndOf="@id/detailsFilmImage"
             app:layout_constraintTop_toBottomOf="@id/filmNameOriginal"
             tools:text="Год" />
+
+        <LinearLayout
+            android:id="@+id/film_note_edit_layout"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="@dimen/outerRViewMargin"
+            android:orientation="vertical"
+            android:visibility="gone"
+            app:layout_constraintBottom_toTopOf="@id/detailsLongDescription"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/detailsFilmImage"
+            app:layout_constraintTop_toBottomOf="@+id/filmReleaseYear"
+            tools:visibility="visible">
+
+            <TextView
+                android:id="@+id/enter_note"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:labelFor="@id/note_edit"
+                android:text="@string/enter_note" />
+
+            <EditText
+                android:id="@+id/note_edit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints=""
+                android:gravity="start"
+                android:inputType="text"
+                android:maxHeight="@dimen/note_edit_max_height"
+                android:minHeight="@dimen/note_edit_min_height"
+                tools:text="Текст заметки" />
+
+            <Button
+                android:id="@+id/save_note_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/save_note" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/film_note_text_layout"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="@dimen/outerRViewMargin"
+            android:orientation="vertical"
+            android:visibility="gone"
+            app:layout_constraintBottom_toTopOf="@id/detailsLongDescription"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/detailsFilmImage"
+            app:layout_constraintTop_toBottomOf="@+id/filmReleaseYear"
+            tools:visibility="visible">
+
+            <TextView
+                android:id="@+id/title_note"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/title_note" />
+
+            <TextView
+                android:id="@+id/note_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="Моя заметка" />
+
+
+        </LinearLayout>
 
         <TextView
             android:id="@+id/detailsLongDescription"

@@ -1,5 +1,7 @@
 package com.example.cininfo.data
 
+import android.util.Log
+
 class RepositoryImpl : Repository {
 
     override fun getPopularFilmDataFromServer(): List<FilmDTO>? {
@@ -22,6 +24,10 @@ class RepositoryImpl : Repository {
 //            })
 //        return data
         return FilmsRepo.popularApi.getPopularFilms("ru-RU", "popularity.desc").execute().body()?.results
+    }
+
+    override fun getFoundFilmDataFromServer(query: String?, isAdult: Boolean?): List<FilmDTO>? {
+        return FilmsRepo.searchApi.getFoundFilms("ru-RU", query, isAdult).execute().body()?.results
     }
 
     override fun getFreshFilmDataFromServer(): List<FilmDTO>? {
