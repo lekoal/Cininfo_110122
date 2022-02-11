@@ -55,4 +55,5 @@
     <string name="enter_query">Введите запрос</string>
     <string name="search">Поиск</string>
     <string name="start_marker">Старт</string>
+    <string name="entered_in_geofence">Вы вошли в зону кинотеатра</string>
 </resources>
