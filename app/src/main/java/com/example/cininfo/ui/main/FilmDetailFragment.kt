@@ -134,7 +134,6 @@ class FilmDetailFragment : Fragment() {
         arguments?.getParcelable<FilmDTO>(BUNDLE_EXTRA)?.let {
             it.apply {
                 saveWatchInfoToDB(id, title, notesRepository.getFilmNote(id), formattedCurrentDate, watchTime)
-                Log.i("MYDB", watchesRepository.getWatchInfo(id).toString())
             }
         }
     }

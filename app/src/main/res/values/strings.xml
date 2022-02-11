@@ -21,4 +21,14 @@
     <string name="save_note">Сохранить</string>
     <string name="title_note">Моя заметка</string>
     <string name="nothing_to_save">Нечего сохранять</string>
+    <string name="contacts_list">Контакты</string>
+    <string name="need_permission_to_read_contacts">Требуется разрешение для чтения контактов</string>
+    <string name="name_and_phone_contact">%1$s, %n %2$s</string>
+    <string name="view_story">История просмотров</string>
+    <string name="view_history_watches_item">%1$s%nДата посещения: %2$s%nВремя просмотра: %3$d мин.%nЗаметка: %4$s</string>
+    <string name="filter_input">Введите название фильма</string>
+    <string name="title_filtration_text">Введите имя фильма</string>
+    <string name="filter_ok_button">Фильтровать</string>
+    <string name="empty_filter_edit_text_error">Не введено название фильма</string>
+    <string name="filter_title_result">Фильтр по названию: %1$s</string>
 </resources>

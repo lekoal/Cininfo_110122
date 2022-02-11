@@ -39,7 +39,18 @@ class MainActivity : AppCompatActivity() {
                     .addToBackStack("")
                     .commit()
             }
-            R.id.action_more -> Toast.makeText(this, "More menu is pressed", Toast.LENGTH_SHORT).show()
+            R.id.contacts_list -> {
+                supportFragmentManager.beginTransaction()
+                    .replace(R.id.container, ContactsFragment.newInstance())
+                    .addToBackStack("")
+                    .commit()
+            }
+            R.id.view_story -> {
+                supportFragmentManager.beginTransaction()
+                    .replace(R.id.container, ViewHistoryFragment.newInstance())
+                    .addToBackStack("")
+                    .commit()
+            }
         }
         return super.onOptionsItemSelected(item)
     }

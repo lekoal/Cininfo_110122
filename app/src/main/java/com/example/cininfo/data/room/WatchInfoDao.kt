@@ -10,6 +10,9 @@ interface WatchInfoDao {
     @Query("SELECT * FROM WatchInfoEntity WHERE id LIKE :id")
     fun getDateById(id: Int?): List<WatchInfoEntity>
 
+    @Query("SELECT * FROM WatchInfoEntity WHERE title LIKE :title")
+    fun getDateByTitle(title: String?): List<WatchInfoEntity>
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(entity: WatchInfoEntity)
 
