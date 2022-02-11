@@ -28,6 +28,12 @@
                 android:title="@string/view_story"
                 app:showAsAction="ifRoom" />
 
+            <item
+                android:id="@+id/open_map"
+                android:icon="@drawable/ic_baseline_map_24"
+                android:title="@string/open_map"
+                app:showAsAction="ifRoom" />
+
         </menu>
 
     </item>
