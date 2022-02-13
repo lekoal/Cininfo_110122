@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "942763030817",
+    "project_id": "cininfo-e0983",
+    "storage_bucket": "cininfo-e0983.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:942763030817:android:5b74a662ac513a5443e660",
+        "android_client_info": {
+          "package_name": "com.example.cininfo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "942763030817-fqrlsv9f4h3apvv6hpudbshqvn99q516.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD8RIFQKk4MNPz_NQN-HrJj4F_4l2ud2DU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "942763030817-fqrlsv9f4h3apvv6hpudbshqvn99q516.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
