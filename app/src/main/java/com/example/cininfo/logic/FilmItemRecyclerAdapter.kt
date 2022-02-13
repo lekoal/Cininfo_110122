@@ -9,7 +9,6 @@ import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import coil.size.Precision
 import coil.size.Scale
-import coil.transform.GrayscaleTransformation
 import com.example.cininfo.R
 import com.example.cininfo.data.FilmDTO
 
