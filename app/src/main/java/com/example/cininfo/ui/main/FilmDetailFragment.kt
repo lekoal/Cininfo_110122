@@ -1,12 +1,10 @@
 package com.example.cininfo.ui.main
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.DatePicker
 import android.widget.Toast
 import coil.load
 import coil.size.Precision
@@ -17,7 +15,6 @@ import com.example.cininfo.app.App.Companion.getWatchInfoDao
 import com.example.cininfo.data.*
 import com.example.cininfo.databinding.FragmentFilmDetailBinding
 import java.text.SimpleDateFormat
-import java.time.DayOfWeek
 import java.util.*
 
 class FilmDetailFragment : Fragment() {

@@ -267,7 +267,7 @@ class MapsFragment : Fragment(), CoroutineScope by MainScope() {
             val job = async(Dispatchers.IO) {
                 geoCoder.getFromLocation(location.latitude, location.longitude, 1)
             }
-            val addresses = job.await()
+//            val addresses = job.await()
 //            showAddressesDialog(addresses[0].getAddressLine(0), location)
         }
     }

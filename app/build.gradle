@@ -22,16 +22,39 @@ android {
 
     buildTypes.each {
         Properties properties = new Properties()
-
         properties.load(project.rootProject.file("apikey.properties").newDataInputStream())
         def apiKey = properties.getProperty("tmdb_api_key")
         it.buildConfigField "String", "TMDB_API_KEY", apiKey
+
+    }
+
+    signingConfigs {
+        release {
+            Properties p_properties = new Properties()
+            p_properties.load(project.rootProject.file("passwords.properties").newDataInputStream())
+            def password = p_properties.getProperty("store_key_password")
+            storeFile file ("keystore.jks")
+            storePassword = password
+            keyAlias 'GeekBrains'
+            keyPassword = password
+        }
     }
 
     buildTypes {
         release {
+            signingConfig signingConfigs.release
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField "String", "TYPE", '"RELEASE"'
+        }
+        beta {
+            initWith debug
+            versionNameSuffix '-beta'
+            buildConfigField "String", "TYPE", '"BETA"'
+        }
+        debug {
+            versionNameSuffix '-debug'
+            buildConfigField "String", "TYPE", '"DEBUG"'
         }
     }
 
@@ -45,6 +68,17 @@ android {
     }
     kotlinOptions {
         jvmTarget = JavaVersion.VERSION_1_8.toString()
+    }
+    flavorDimensions 'version'
+    productFlavors {
+        freeConfig {
+            dimension 'version'
+            versionNameSuffix '.free'
+        }
+        paidConfig {
+            dimension 'version'
+            versionNameSuffix '.paid'
+        }
     }
 }
 
@@ -69,7 +103,6 @@ dependencies {
     implementation 'androidx.recyclerview:recyclerview:1.2.1'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'com.google.firebase:firebase-messaging-ktx:23.0.0'
-    testImplementation 'junit:junit:'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 
