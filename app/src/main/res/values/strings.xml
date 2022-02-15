@@ -31,6 +31,9 @@
     <string name="filter_ok_button">Фильтровать</string>
     <string name="empty_filter_edit_text_error">Не введено название фильма</string>
     <string name="filter_title_result">Фильтр по названию: %1$s</string>
+
+    <string name="build_version">Текущая версия: %1s</string>
+    <string name="hello">Hello, release!</string>
     <!-- Геолокация ресурсы -->
     <string name="dialog_button_close">Закрыть</string>
     <string name="dialog_title_no_gps">Доступ к геолокации закрыт</string>

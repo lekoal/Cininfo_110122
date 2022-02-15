@@ -64,6 +64,15 @@
             app:layout_constraintTop_toBottomOf="@id/popularTitle"
             tools:listitem="@layout/film_item" />
 
+        <TextView
+            android:id="@+id/build_version"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/outerRViewMargin"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/popularRView" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <FrameLayout
